@@ -41,7 +41,7 @@ function findAverageofValues(accumulator, currentValue) {
 //   arrayOfNumbers.reduce(findAverageofValues, { n: 0, total: 0, average: 0 })
 // );
 
-// We can perform multiple operations at a time with reduce. On the same array, find the sum, product and average of the numbers with only one traversal of the array.
+// We can perform multiple operations at a time with reduce, which allows us to write powerful functions. On the same array, find the sum, product and average of the numbers with only one traversal of the array.
 
 // console.log(
 //   arrayOfNumbers.reduce(sumMultiplyAndAverageArrayValues, {
@@ -53,7 +53,6 @@ function findAverageofValues(accumulator, currentValue) {
 // );
 
 function sumMultiplyAndAverageArrayValues(accumulator, currentValue) {
-  console.log(accumulator, currentValue);
   return {
     sum: accumulator.sum + currentValue,
     product: accumulator.product * currentValue,
@@ -62,8 +61,57 @@ function sumMultiplyAndAverageArrayValues(accumulator, currentValue) {
   };
 }
 
+//  Another powerful feature of reduce is that the currentValue doesn't need to be the same type as the accumulator. For example, we can use reduce on an array of numbers and input a string. In the next exercise, return a string which shows the build up of the sum of our array values. Each sum should be on a new line, with the last line being the total.
+
+// console.log(arrayOfNumbers.reduce(printNumbersAsString, 0));
+
+function printNumbersAsString(accumulator, currentValue) {
+  return `${accumulator + currentValue} \n`;
+}
+
+// Now, create a fizzbuzz solution for the given array of numbers. Fizzbuzz is an arithmetic game used to teach children division. As you count up, if a number is divisible by three, you say fizz. If divisible by five, you say buzz. If divisible by three and five, you say fizzbuzz. If divisable by neither three or five, you just say the number.
+
+let givenArrayOfNumbersForFizzBuzz = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  30,
+  60,
+  90,
+  101,
+  102,
+  103,
+  104,
+  105,
+  300
+];
+
+console.log(givenArrayOfNumbersForFizzBuzz.reduce(fizzBuzzReducer, ""));
+
+function fizzBuzzReducer(accumulator, currentValue) {
+  if (currentValue % 15 === 0) {
+    return `${accumulator} ${currentValue}: FizzBuzz \n`;
+  }
+  if (currentValue % 5 === 0) {
+    return `${accumulator} ${currentValue}: Buzz \n`;
+  }
+  if (currentValue % 3 === 0) {
+    return `${accumulator} ${currentValue}: Fizz \n`;
+  } else {
+    return `${accumulator} ${currentValue} \n`;
+  }
+}
+
 // ####################################################
-// # Math operations with Reduce on Arrays of Objects #
+// # Manipulating Arrays of Objects with Reduce #
 // ####################################################
 
 // Reduce can also be used to perform math operations on arrays of objects. Imagine you are working on a social network and you want to perform quick analysis the group of users below.
@@ -196,7 +244,3 @@ let arrayOfUserIds = [
   178,
   189
 ];
-
-// Other conversions - take array of numbers and output as strings 1. just make a simple addition  TODO
-
-// Other conversions - take array of numbers and output as strings 2. fizzbuzz TODO
