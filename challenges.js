@@ -41,6 +41,27 @@ function findAverageofValues(accumulator, currentValue) {
 //   arrayOfNumbers.reduce(findAverageofValues, { n: 0, total: 0, average: 0 })
 // );
 
+// We can perform multiple operations at a time with reduce. On the same array, find the sum, product and average of the numbers with only one traversal of the array.
+
+// console.log(
+//   arrayOfNumbers.reduce(sumMultiplyAndAverageArrayValues, {
+//     sum: 0,
+//     product: 1,
+//     average: 0,
+//     n: 0
+//   })
+// );
+
+function sumMultiplyAndAverageArrayValues(accumulator, currentValue) {
+  console.log(accumulator, currentValue);
+  return {
+    sum: accumulator.sum + currentValue,
+    product: accumulator.product * currentValue,
+    average: (accumulator.sum + currentValue) / (accumulator.n + 1),
+    n: accumulator.n + 1
+  };
+}
+
 // ####################################################
 // # Math operations with Reduce on Arrays of Objects #
 // ####################################################
@@ -150,3 +171,32 @@ function selectUserIDsOutputAsArray(accumulator, currentValue) {
   output.push(currentValue.userid);
   return output;
 }
+
+// Now, what if we want to convert the array we just made, and return it as an array of objects, in which each element has information on the userid and the source of the userid e.g. [{source: "Social Network users", userid: 23}, {source: "Social Network users", userid: 24},{source: "Social Network users", userid: 26}].  TODO
+
+let arrayOfUserIds = [
+  23,
+  24,
+  27,
+  40,
+  43,
+  46,
+  48,
+  65,
+  78,
+  89,
+  119,
+  123,
+  124,
+  139,
+  142,
+  146,
+  147,
+  167,
+  178,
+  189
+];
+
+// Other conversions - take array of numbers and output as strings 1. just make a simple addition  TODO
+
+// Other conversions - take array of numbers and output as strings 2. fizzbuzz TODO
