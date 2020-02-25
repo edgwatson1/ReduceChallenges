@@ -112,16 +112,16 @@ function averageFollowers(accumulator, currentValue) {
 
 // What is the average number of followers of users from Portugal?
 
-console.log(
-  arrayOfAllObjectsWithAllSocialNetworkUsers.reduce(
-    averageFollowersFromPortugal,
-    {
-      n: 0,
-      total: 0,
-      average: 0
-    }
-  )
-);
+// console.log(
+//   arrayOfAllObjectsWithAllSocialNetworkUsers.reduce(
+//     averageFollowersFromPortugal,
+//     {
+//       n: 0,
+//       total: 0,
+//       average: 0
+//     }
+//   )
+// );
 
 function averageFollowersFromPortugal(accumulator, currentValue) {
   if (currentValue.country === "Portugal") {
@@ -134,4 +134,19 @@ function averageFollowersFromPortugal(accumulator, currentValue) {
   } else {
     return accumulator;
   }
+}
+
+// Reduce is useful to map values to new data structures. Select only userids and output them as an array e.g. [234,239,454].
+
+// console.log(
+//   arrayOfAllObjectsWithAllSocialNetworkUsers.reduce(
+//     selectUserIDsOutputAsArray,
+//     []
+//   )
+// );
+
+function selectUserIDsOutputAsArray(accumulator, currentValue) {
+  let output = accumulator;
+  output.push(currentValue.userid);
+  return output;
 }
